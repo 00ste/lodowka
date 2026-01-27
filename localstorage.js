@@ -1,8 +1,8 @@
 /**
  * The default item.
- * Rewrite this for your own application.
  */
-const DEFAULT_ITEM = { name: "" };
+// i love javascript
+const DEFAULT_ITEM = { name: "", date: (new Date()).toISOString().slice(0, 10) };
 
 // ====================================
 // STATE MANAGEMENT
@@ -79,14 +79,34 @@ function _get_items_container() {
  * @returns The HTML as a single string.
  */
 function item_generator(item, index) {
-    return `<div class="item">
-        <input  class="item-name" type="text" id="item-${index}-name" value="${item.name}">
-        <button class="item-delete" onclick="_item_delete(${index})">Delete</button>
-    </div>`;
+    const today = new Date();
+    const days_left = Math.floor((new Date(item.date) - today) / (1000 * 60 * 60 * 24)) + 1;
+    let c = "";
+    if (days_left <= 3) c = "warning";
+    if (days_left <= 0) c = "expired";
+
+    return `<tr class="item">
+        <td>
+            <input  class="item-name" type="text" id="item-${index}-name" value="${item.name}" placeholder="Enter the name of the item...">
+        </td>
+        <td>
+            <input class="item-date" type="date" id="item-${index}-date" value="${item.date}">
+        </td>
+        <td>
+            <p class="item-daysleft ${c}">${days_left}</p>
+        </td>
+        <td>
+            <button class="item-delete" onclick="_item_delete(${index})">✘</button>
+        </td>
+    </tr>`;
 }
 
 function _items_generator(items) {
-    new_items = "";
+    if (items.length == 0) {
+        return "<p class=\"noitem\">Start by adding a new item or importing items.</p>"
+    }
+
+    new_items = "<thead><tr><td>Item</td><td>Expiration date</td><td>Days left</td></tr></thead><tbody>";
 
     for (let i = 0; i < items.length; i++) {
         const item = items[i];
@@ -95,12 +115,13 @@ function _items_generator(items) {
         new_items += item_generator(item, i);
     }
 
+    new_items += "</tbody>";
+
     return new_items;
 }
 
 /**
  * Assign the callback functions for when the items are modified.
- * Rewrite this function for your own application, by adding any callback functions for extra fields of the items.
  * @param {*} items The list of items
  * @returns undefined.
  */
@@ -110,11 +131,17 @@ function callbacks_generator(items) {
         
         form_item = document.getElementById(`item-${index}-name`);
         if (!form_item) return;
-
         form_item.addEventListener(
             "change",
-            (e) => _state_edit_item(index, { ...item, name: e.target.value }, _get_items_container())
+            (e) => _state_edit_item(index, { ...item, name: e.target.value })
         );
+
+        date_item = document.getElementById(`item-${index}-date`);
+        if (!date_item) return;
+        date_item.addEventListener(
+            "change",
+            (e) => _state_edit_item(index, { ...item, date: e.target.value })
+        )
     }
 }
 

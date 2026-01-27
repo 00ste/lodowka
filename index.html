@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Local storage template</title>
+    <title>Lodówka</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="_init()">
-    <h1>List of items</h1>
+    <h1>Lodówka</h1>
     <button onclick="_item_add_new()">Add a new item</button>
     <button onclick="_items_export_to_file()">Export items</button>
     <button onclick="_items_import_from_file()">Import items</button>
     <input style="display: none" type="file" id="import-file" accept="application/json"></input>
-    <div id="items-container">
-    </div>
+    <table id="items-container">
+    </table>
 
-    <footer>
-        <a href="./about.html">About</a>
-    </footer>
+    <h2>About Lodówka</h2>
+    <ul>
+        <li>A simple web application that helps you keep track of the expiration date of products you bought.</li>
+        <li>All the data is stored in the local storage of your browser, and the application will not work if the browser erases the browsing data.</li>
+        <li>You can download a backup of your data as a JSON file, and import this file on another device or in case the browser data is lost.</li>
+    </ul>
+
 
     <script src="localstorage.js" defer></script>
 </body>
