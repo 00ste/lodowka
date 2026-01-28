@@ -87,7 +87,7 @@ function item_generator(item, index) {
 
     return `<tr class="item">
         <td>
-            <input  class="item-name" type="text" id="item-${index}-name" value="${item.name}" placeholder="Enter the name of the item...">
+            <input  class="item-name" type="text" id="item-${index}-name" value="${item.name}" placeholder="Enter the name...">
         </td>
         <td>
             <input class="item-date" type="date" id="item-${index}-date" value="${item.date}">
