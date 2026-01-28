@@ -92,8 +92,8 @@ function item_generator(item, index) {
         <td>
             <input class="item-date" type="date" id="item-${index}-date" value="${item.date}">
         </td>
-        <td>
-            <p class="item-daysleft ${c}">${days_left}</p>
+        <td class="${c}">
+            <p class="item-daysleft">${days_left}</p>
         </td>
         <td>
             <button class="item-delete" onclick="_item_delete(${index})">✘</button>
@@ -106,7 +106,7 @@ function _items_generator(items) {
         return "<p class=\"noitem\">Start by adding a new item or importing items.</p>"
     }
 
-    new_items = "<thead><tr><td>Item</td><td>Expiration date</td><td>Days left</td></tr></thead><tbody>";
+    new_items = "<thead><tr><td id=\"name-header\">Item</td><td id=\"date-header\">Expiration date</td><td id=\"daysleft-header\">Days left</td><td id=\"delete-header\"></td></tr></thead><tbody>";
 
     for (let i = 0; i < items.length; i++) {
         const item = items[i];

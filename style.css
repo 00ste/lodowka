@@ -9,8 +9,10 @@ body {
     --primary:       rgb(64, 124, 72);
     --primary-focus: rgb(76, 157, 86);
     --warning:       rgb(132, 114, 13);
+    --warning-bg:    rgb(252, 244, 200);
     --danger:        rgb(157, 76, 76);
-    --danger-focus:  rgb(124, 64, 64);
+    --danger-bg:     rgb(249, 200, 200);
+    --danger-focus:  rgb(198, 100, 100);
 
     background-color: var(--background);
     color: var(--text);
@@ -23,9 +25,11 @@ body {
         --background:    rgb(39, 39, 39);
         --primary:       rgb(98, 183, 109);
         --primary-focus: rgb(74, 139, 82);
-        --warning:       rgb(132, 114, 13);
-        --danger:        rgb(194, 89, 89);
-        --danger-focus:  rgb(157, 76, 76);
+        --warning:       rgb(221, 205, 112);
+        --warning-bg:    rgb(69, 64, 39);
+        --danger:        rgb(224, 132, 132);
+        --danger-bg:     rgb(72, 44, 44);
+        --danger-focus:  rgb(183, 108, 108);
     }
 }
 
@@ -41,11 +45,6 @@ button:hover {
     background-color: var(--primary-focus);
 }
 
-#items-container {
-    margin-top: 1em;
-    background-color: transparent;
-}
-
 thead tr td {
     background-color: var(--primary);
     font-weight: bold;
@@ -56,6 +55,28 @@ thead tr td {
     padding: 0.3em;
 }
 
+#items-container {
+    margin-top: 1em;
+    background-color: transparent;
+    width: 100%;
+    max-width: 35em;
+    table-layout: fixed;
+}
+
+#date-header {
+    width: 10em;
+    min-width: 10em;
+}
+
+#daysleft-header {
+    width: max-content;
+}
+
+#delete-header {
+    background-color: transparent;
+    width: 2em;
+}
+
 tbody tr td {
     padding: 0;
 }
@@ -64,7 +85,6 @@ tbody tr td {
     background-color: transparent;
     color: var(--text);
     height: 2em;
-    max-width: 30vw;
     box-sizing: border-box;
     padding: 0.3em;
     margin: 0;
@@ -90,18 +110,19 @@ tbody tr td {
 
 .warning {
     color: var(--warning);
+    background-color: var(--warning-bg);
 }
 
 .expired {
-    /* color: rgb(132, 13, 13); */
     color: var(--danger);
+    background-color: var(--danger-bg);
 }
 
 .item-delete {
     background-color: var(--danger);
     padding: 0.2em;
     height: 2em;
-    width: 2em;
+    width: 100%;
     margin: 0;
 }
 
