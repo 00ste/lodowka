@@ -1,0 +1,44 @@
+{
+    "name": "Lodówka",
+    "icons": [
+        {
+            "src": "icons/512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "icons/192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "icons/128.png",
+            "type": "image/png",
+            "sizes": "128x128"
+        },
+        {
+            "src": "icons/64.png",
+            "type": "image/png",
+            "sizes": "64x64"
+        },
+        {
+            "src": "icons/48.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "icons/32.png",
+            "type": "image/png",
+            "sizes": "32x32"
+        },
+        {
+            "src": "icons/16.png",
+            "type": "image/png",
+            "sizes": "16x16"
+        }
+    ],
+    "start_url": "https://00ste.github.io/lodowka",
+    "display-override": ["fullscreen", "minimal-ui"],
+    "display": "standalone",
+    "prefer_related_applications": false
+}
